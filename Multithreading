@@ -1,0 +1,46 @@
+class Thread1 extends Thread{
+	String nm;
+	Thread1(String n)
+	{
+		nm=n;
+		System.out.println("Child thread "+this);
+		start();
+	}
+	public void run()
+	{
+		try {
+			for(int i=5;i>=0;i--)
+			{
+				System.out.println("Child thread: "+nm+" "+i);
+				Thread.sleep(500);
+			}
+		}
+		catch(InterruptedException e)
+		{
+			System.out.println("Child Exception");
+		}
+		System.out.println("Exiting child thread"+nm);
+	}
+}
+public class ThreadDemo {
+	public static void main(String []arg)
+	{
+		Thread1 t1= new Thread1("text");
+		Thread1 t2 =new Thread1("second");
+		Thread1 t3=new Thread1("third");
+		try {
+			for(int i=5;i>=0;i--)
+			{
+				System.out.println("Main thread");
+				Thread.sleep(500);
+				
+			}
+		}catch(Exception e)
+		{
+			System.out.println("Main exception");
+		}
+		System.out.println("Exiting main thread");
+		
+	}
+
+}
