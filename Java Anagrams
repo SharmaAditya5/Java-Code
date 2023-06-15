@@ -1,0 +1,51 @@
+import java.io.*;
+import java.util.*;
+
+public class Solution {
+
+    static int findoccur(String s,char c)
+    {
+        int n=0;
+        for(int i=0;i<s.length();i++)
+        {
+            char ch=s.charAt(i);
+            if(ch==c)
+            {
+                n++;
+            }
+        }
+         return n;
+    }
+    public static void main(String[] args) {
+        Scanner sc=new Scanner(System.in);
+        
+        String s1=sc.nextLine();
+        String s2=sc.nextLine();
+        s1=s1.toUpperCase();
+        s2=s2.toUpperCase();
+        int n1=s1.length();
+        int n2=s2.length();
+        if(n1!=n2)
+            System.out.println("Not Anagrams");
+        else{
+            char ch;
+            int flag=1;
+            for(int i=0;i<n1;i++)
+            {
+                ch=s1.charAt(i);
+                
+                if(findoccur(s1,ch)!=findoccur(s2,ch))
+                {
+                    flag=0;
+                    System.out.println("Not Anagrams");
+                    break;
+                }
+            }
+            if(flag!=0)
+                System.out.println("Anagrams");
+        }
+        
+        
+        /* Enter your code here. Read input from STDIN. Print output to STDOUT. Your class should be named Solution. */
+    }
+}
